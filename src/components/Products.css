@@ -76,4 +76,116 @@
   margin-top: 10px;
   font-weight: bold;
   color: #4caf50;
+}
+
+.note-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.note-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.note-validation {
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.note-validation.valid {
+  color: #4caf50;
+}
+
+.note-validation.invalid {
+  color: #f44336;
+}
+
+.preview-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.preview-products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.preview-product {
+  display: flex;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 10px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.preview-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.preview-details {
+  margin-left: 10px;
+  flex: 1;
+}
+
+.preview-details h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+
+.preview-price {
+  color: #e91e63;
+  font-weight: bold;
+  margin: 0;
+}
+
+.preview-note {
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  padding: 10px 15px;
+  margin: 20px 0;
+}
+
+.preview-note h3 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.preview-link {
+  margin-top: 20px;
+}
+
+.link-display {
+  display: flex;
+  margin-top: 10px;
+}
+
+.link-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 } 

@@ -9,6 +9,12 @@ function App() {
   const [stage, setStage] = useState('search') // 'search', 'results', 'select', 'note', 'preview'
   const [searchResults, setSearchResults] = useState<Product[]>([])
   const [selectedProducts, setSelectedProducts] = useState<number[]>([])
+  const [note, setNote] = useState<string>('')
+  const [generatedLink, setGeneratedLink] = useState<string>('')
+
+  // Constants for note validation
+  const MIN_NOTE_LENGTH = 30
+  const MAX_NOTE_LENGTH = 200
 
   const handleSearch = (query: string) => {
     // Mock search functionality - in a real app, this would call an API
@@ -30,6 +36,38 @@ function App() {
       // If already have 3 selected, don't add more
       return prev
     })
+  }
+
+  const handleNoteChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setNote(e.target.value)
+  }
+
+  const generateLink = () => {
+    // Get base URL (in a real app, this would be your domain)
+    const baseUrl = window.location.origin
+    
+    // Create a URL with the selected product IDs and encoded note
+    const productParams = selectedProducts.map(id => `product=${id}`).join('&')
+    const encodedNote = encodeURIComponent(note)
+    
+    // Generate the link
+    const link = `${baseUrl}/share?${productParams}&note=${encodedNote}`
+    setGeneratedLink(link)
+    setStage('preview')
+  }
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(generatedLink)
+      .then(() => {
+        alert('Link copied to clipboard!')
+      })
+      .catch(err => {
+        console.error('Failed to copy link: ', err)
+      })
+  }
+
+  const getSelectedProductsData = (): Product[] => {
+    return mockProducts.filter(product => selectedProducts.includes(product.id))
   }
 
   const renderStage = () => {
@@ -72,33 +110,84 @@ function App() {
         return (
           <div className="stage-container">
             <h1>Add Personal Note</h1>
-            <p>Enter your note (min/max chars).</p>
-            <button 
-              className="search-button" 
-              onClick={() => setStage('preview')}
-              style={{ margin: '20px auto', display: 'block' }}
-            >
-              Generate Link & Preview
-            </button>
+            <p>Add a personal note to your recommendation ({note.length}/{MIN_NOTE_LENGTH}-{MAX_NOTE_LENGTH} characters)</p>
+            <div className="note-container">
+              <textarea
+                value={note}
+                onChange={handleNoteChange}
+                className="note-textarea"
+                placeholder="Add your personal recommendation here..."
+                rows={6}
+                maxLength={MAX_NOTE_LENGTH}
+              />
+              <div className={`note-validation ${note.length >= MIN_NOTE_LENGTH ? 'valid' : 'invalid'}`}>
+                {note.length < MIN_NOTE_LENGTH ? 
+                  `Please enter at least ${MIN_NOTE_LENGTH} characters` : 
+                  'Note length is valid ✓'}
+              </div>
+              <button 
+                className="search-button" 
+                onClick={generateLink}
+                disabled={note.length < MIN_NOTE_LENGTH}
+                style={{ 
+                  margin: '20px auto', 
+                  display: 'block',
+                  opacity: note.length < MIN_NOTE_LENGTH ? 0.5 : 1
+                }}
+              >
+                Generate Link & Preview
+              </button>
+            </div>
           </div>
         )
       case 'preview':
+        const selectedProductsData = getSelectedProductsData()
         return (
           <div className="stage-container">
             <h1>Preview Recommendation</h1>
-            <button 
-              className="search-button" 
-              onClick={() => console.log('Copy link')}
-              style={{ margin: '20px auto', display: 'block' }}
-            >
-              Copy Link
-            </button>
+            <div className="preview-container">
+              <h2>Your Recommendation</h2>
+              <div className="preview-products">
+                {selectedProductsData.map(product => (
+                  <div key={product.id} className="preview-product">
+                    <img src={product.image} alt={product.name} className="preview-image" />
+                    <div className="preview-details">
+                      <h3>{product.name}</h3>
+                      <p className="preview-price">${product.price.toFixed(2)}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="preview-note">
+                <h3>Your Note:</h3>
+                <p>{note}</p>
+              </div>
+              <div className="preview-link">
+                <p>Share this link with your customer:</p>
+                <div className="link-display">
+                  <input 
+                    type="text" 
+                    value={generatedLink} 
+                    readOnly 
+                    className="link-input"
+                  />
+                  <button 
+                    className="search-button" 
+                    onClick={handleCopyLink}
+                  >
+                    Copy Link
+                  </button>
+                </div>
+              </div>
+            </div>
             <button 
               className="search-button" 
               onClick={() => {
                 setStage('search')
                 setSelectedProducts([])
                 setSearchResults([])
+                setNote('')
+                setGeneratedLink('')
               }}
               style={{ margin: '20px auto', display: 'block' }}
             >
