@@ -6,13 +6,12 @@
 
 - search box for products
 - staff in stores can send personal recommendations to customers
-  - select up to 3 items
-  - next
+  - select up to 3 items (next button)
   - personal message (note)
   - button(generate a shareable link)
   - next screen: preview card with product thumbnails, note, and "copy link" button
 
-### 1.1.1 Functional Requirements
+<!-- ### 1.1.1 Functional Requirements
 
 | Code  | Priority | Requirement                       | Status  |
 | ----- | -------- | --------------------------------- | ------- |
@@ -24,7 +23,7 @@
 | Code   | Priority | Requirement                           | Status  |
 | ------ | -------- | ------------------------------------- | ------- |
 | NFR-01 | P0       | _(define non-functional requirement)_ | _(TBD)_ |
-| NFR-02 | P2       | _(define non-functional requirement)_ | _(TBD)_ |
+| NFR-02 | P2       | _(define non-functional requirement)_ | _(TBD)_ | -->
 
 # 2. Design
 
@@ -58,3 +57,31 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 
 - Re-evaluate decisions using first-principles thinking.
 - Update documentation, logging, observability; verify performance budgets.
+
+# 7. Backlog Items
+
+## 7.1 Navigation & User Flow
+
+| Priority | Item                | Description                                                                                   |
+| -------- | ------------------- | --------------------------------------------------------------------------------------------- |
+| High     | Back Navigation     | Add ability to navigate back to previous screens in the workflow (back button or breadcrumbs) |
+| Medium   | Workflow Indicators | Add progress indicators to show users which stage of the workflow they're in                  |
+| Low      | Animations          | Add subtle animations for transitions between workflow stages                                 |
+
+## 7.2 UI/UX Improvements
+
+| Priority | Item                     | Description                                                                         |
+| -------- | ------------------------ | ----------------------------------------------------------------------------------- |
+| High     | Text Contrast in Preview | Fix contrast issue with text in preview recommendation screen to ensure readability |
+| Medium   | Search Box Background    | Improve the background color of the search box for better visual distinction        |
+| Medium   | Mobile Responsiveness    | Optimize layout for smaller screen sizes                                            |
+| Low      | Dark Mode                | Add support for dark mode theme                                                     |
+
+## 7.3 Features
+
+| Priority | Item               | Description                                                                              |
+| -------- | ------------------ | ---------------------------------------------------------------------------------------- |
+| High     | Link Functionality | Implement actual functionality for the generated link so it opens with selected products |
+| Medium   | Product Filtering  | Add ability to filter products by category or type                                       |
+| Medium   | Save Drafts        | Allow users to save recommendation drafts for later completion                           |
+| Low      | Product Search API | Replace mock data with actual API calls to product database                              |
