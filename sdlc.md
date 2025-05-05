@@ -90,7 +90,7 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 
 ## 7. Backlog
 
-1. **[P0]** fix: Remove "zustand" text appearing in "Start a New Form" button on confirmation screen
+1. **[P0]** ~~fix: Remove "zustand" text appearing in "Start a New Form" button on confirmation screen~~ FIXED: Removed duplicate "Start New Form" buttons on confirmation screen
 2. **[P0]** fix: Update input styles - white text on light background across all form inputs
 3. **[P1]** feat: Implement proper QR code generation for the shareable link
 4. **[P1]** fix: Add proper validation for phone number and email format (currently allows invalid formats)

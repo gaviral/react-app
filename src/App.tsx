@@ -326,11 +326,6 @@ function App() {
               </button>
             </>
           )}
-          {currentStep === 4 && (
-            <button className="restart-button" onClick={handleRestart}>
-              Start New Form
-            </button>
-          )}
         </div>
       </div>
     </div>
