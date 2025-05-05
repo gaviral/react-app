@@ -9,12 +9,12 @@
    - **Step 2 — Style tags** : multi-select up to **5** tags (source `/api/tags?q=` autocomplete).
      - summer/winter/garden (clothing/style)
    - **Step 3 — Optional note** (≤ 280 chars) & **Consent checkbox** (“I agree to receive recommendations”).
-2. **Progress indicator** across top; “Next/Back” buttons disabled until step valid.
+2. **Progress indicator** across top; "Next/Back" buttons disabled until step valid.
 3. On _Submit_, POST to `/api/customers/preferences` → response `{shareUrl:"[https://six.app/p/xyz789"}`.](https://six.app/p/xyz789%22%7D`. "https://six.app/p/xyz789%22%7d%60.")
 4. Show **Confirmation panel** with:
    - Shareable link displayed in input + **Copy** button (clipboard feedback).
    - **QR code** of the link (generate client-side).
-5. **Persist draft state** in `localStorage` so accidental refresh doesn’t lose progress.
+5. **Persist draft state** in `localStorage` so accidental refresh doesn't lose progress.
 
 ### Stretch Goals (offered only if they finish ≥10 min early)
 
@@ -90,6 +90,10 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 
 ## 7. Backlog
 
-1. _(Backlog item)_
-2. _(Backlog item)_
-3. _(Backlog item)_
+1. **[P0]** fix: Remove "zustand" text appearing in "Start a New Form" button on confirmation screen
+2. **[P0]** fix: Update input styles - white text on light background across all form inputs
+3. **[P1]** feat: Implement proper QR code generation for the shareable link
+4. **[P1]** fix: Add proper validation for phone number and email format (currently allows invalid formats)
+5. **[P2]** feat: Add visual feedback for form validation errors
+6. **[P2]** feat: Add direct link from homepage to style-capture route
+7. **[P3]** feat: Improve mobile responsiveness

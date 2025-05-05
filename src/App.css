@@ -109,6 +109,15 @@ body {
   padding: 0 1rem;
   font-size: 0.875rem;
   color: var(--text-color);
+  cursor: default;
+}
+
+.progress-indicator .step.validated {
+  cursor: pointer;
+}
+
+.progress-indicator .step.validated:hover {
+  color: var(--primary-color);
 }
 
 .progress-indicator .step::before {
@@ -124,6 +133,10 @@ body {
 
 .progress-indicator .step.active::before {
   background-color: var(--primary-color);
+}
+
+.progress-indicator .step.validated::before {
+  background-color: var(--success-color);
 }
 
 /* Form container */
@@ -172,6 +185,31 @@ body {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 2px rgba(74, 86, 226, 0.2);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: var(--error-color);
+  background-color: rgba(239, 68, 68, 0.05);
+}
+
+.form-group input.error:focus,
+.form-group textarea.error:focus {
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: rgba(239, 68, 68, 0.1);
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--error-color);
+}
+
+.form-group.error-container label {
+  color: var(--error-color);
 }
 
 .form-group textarea {
@@ -242,7 +280,8 @@ body {
 }
 
 .back-button,
-.next-button {
+.next-button,
+.restart-button {
   padding: 0.75rem 1.5rem;
   border-radius: var(--border-radius);
   font-weight: 500;
@@ -273,6 +312,25 @@ body {
 .next-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.restart-button {
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  margin: 2rem auto 0;
+  display: block;
+  padding: 0.75rem 2rem;
+}
+
+.restart-button:hover {
+  background-color: var(--secondary-color);
+}
+
+.restart-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
 }
 
 /* Confirmation step */
@@ -321,4 +379,11 @@ body {
   justify-content: center;
   font-size: 0.875rem;
   border: 1px solid var(--border-color);
+}
+
+.selection-count {
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: right;
 }

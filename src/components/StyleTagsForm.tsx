@@ -3,11 +3,13 @@ import React from 'react';
 type StyleTagsFormProps = {
   selectedTags: string[];
   onTagsChange: (tags: string[]) => void;
+  error?: string;
 };
 
 const StyleTagsForm: React.FC<StyleTagsFormProps> = ({
   selectedTags,
   onTagsChange,
+  error
 }) => {
   // In a real app, this would come from an API
   const availableTags = ['summer', 'winter', 'garden', 'casual', 'formal', 'business', 'street', 'vintage'];
@@ -25,6 +27,9 @@ const StyleTagsForm: React.FC<StyleTagsFormProps> = ({
   return (
     <div className="step-content">
       <h2>Style Preferences</h2>
+      
+      {error && <div className="error-message">{error}</div>}
+      
       <div className="style-tags">
         {availableTags.map((tag) => (
           <div 
@@ -37,6 +42,9 @@ const StyleTagsForm: React.FC<StyleTagsFormProps> = ({
         ))}
       </div>
       <p className="helper-text">Select up to 5 style tags.</p>
+      <p className="selection-count">
+        You've selected {selectedTags.length} {selectedTags.length === 1 ? 'tag' : 'tags'}
+      </p>
     </div>
   );
 };

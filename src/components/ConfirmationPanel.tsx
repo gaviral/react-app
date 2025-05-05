@@ -2,10 +2,12 @@ import React from 'react';
 
 type ConfirmationPanelProps = {
   shareUrl: string;
+  onRestart?: () => void;
 };
 
 const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
   shareUrl,
+  onRestart
 }) => {
   const [isCopied, setIsCopied] = React.useState(false);
 
@@ -37,6 +39,14 @@ const ConfirmationPanel: React.FC<ConfirmationPanelProps> = ({
         {/* In a real app, we would use a library to generate a QR code */}
         <div className="mock-qr-code">QR Code for: {shareUrl}</div>
       </div>
+      
+      {onRestart && (
+        <div className="restart-container">
+          <button className="restart-button" onClick={onRestart}>
+            Start a New Form
+          </button>
+        </div>
+      )}
     </div>
   );
 };
