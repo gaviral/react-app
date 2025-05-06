@@ -101,4 +101,4 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 
 1. keeping the saved url (not just in the toast)
 2. Implement product selection mechanism in Controls panel.
-3. _(Backlog item)_
+3. Improve overall UI/UX and visual polish.
