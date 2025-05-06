@@ -9,6 +9,7 @@ interface ControlsPanelProps {
   setBackgroundColor: (color: string) => void;
   isRounded: boolean;
   setIsRounded: (rounded: boolean) => void;
+  setSavedUrl: (url: string | null) => void;
 }
 
 const ControlsPanel: React.FC<ControlsPanelProps> = ({
@@ -20,7 +21,15 @@ const ControlsPanel: React.FC<ControlsPanelProps> = ({
   setBackgroundColor,
   isRounded,
   setIsRounded,
+  setSavedUrl,
 }) => {
+
+  const handleSave = () => {
+    const mockUrl = `https://example.com/share/${Date.now()}`;
+    console.log('Simulating save, generated URL:', mockUrl);
+    setSavedUrl(mockUrl);
+  };
+
   return (
     <div style={{ flex: 1, borderRight: '1px solid #ccc', padding: '20px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
       <h2>Controls</h2>
@@ -86,7 +95,12 @@ const ControlsPanel: React.FC<ControlsPanelProps> = ({
          </label>
       </div>
 
-      <button style={{ padding: '10px', marginTop: 'auto' }}>Save Card</button>
+      <button
+        style={{ padding: '10px', marginTop: 'auto' }}
+        onClick={handleSave}
+      >
+        Save Card
+      </button>
 
     </div>
   );

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css'
 import ControlsPanel from './components/ControlsPanel';
 import PreviewPanel from './components/PreviewPanel';
+import { Toaster, toast } from 'react-hot-toast';
 
 // Keys for local storage
 const LS_KEYS = {
@@ -18,6 +19,7 @@ function App() {
   const [backgroundColor, setBackgroundColor] = useState(() => localStorage.getItem(LS_KEYS.BG_COLOR) || '#ffffff');
   // Need to parse boolean from string
   const [isRounded, setIsRounded] = useState(() => localStorage.getItem(LS_KEYS.IS_ROUNDED) === 'true' || false);
+  const [savedUrl, setSavedUrl] = useState<string | null>(null);
 
   // --- Effects for saving to Local Storage ---
   useEffect(() => {
@@ -36,10 +38,69 @@ function App() {
     localStorage.setItem(LS_KEYS.IS_ROUNDED, String(isRounded)); // Store boolean as string
   }, [isRounded]);
 
+  // Effect to show toast when URL is saved
+  useEffect(() => {
+    if (savedUrl) {
+      // Show persistent toast with copy button
+      toast.custom(
+        (t) => (
+          <div
+            style={{
+              background: '#333', // Dark background
+              color: 'white',
+              padding: '16px',
+              borderRadius: '8px',
+              boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              opacity: t.visible ? 1 : 0,
+              transition: 'opacity 300ms ease-in-out',
+            }}
+          >
+            <span>Card saved!</span>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(savedUrl)
+                  .then(() => {
+                    toast.success('URL copied!', { id: 'copy-success', duration: 2000 }); // Show success feedback
+                    // Optionally dismiss the main toast after copy? Or keep it persistent?
+                    // toast.dismiss(t.id); // Example: dismiss main toast after copy
+                  })
+                  .catch(err => {
+                    console.error('Failed to copy: ', err);
+                    toast.error('Failed to copy URL', { id: 'copy-error' });
+                  });
+              }}
+              style={{
+                marginLeft: 'auto',
+                padding: '5px 10px',
+                background: '#555',
+                color: 'white',
+                border: 'none',
+                borderRadius: '4px',
+                cursor: 'pointer',
+              }}
+            >
+              Copy URL
+            </button>
+             {/* Optional: Add a close button if persistence isn't strictly required */}
+             {/* <button onClick={() => toast.dismiss(t.id)} style={{ ... }}>X</button> */}
+          </div>
+        ),
+        {
+          id: 'saved-card-toast', // Use an ID to prevent duplicates if save is clicked quickly
+          duration: Infinity, // Make it persistent
+        }
+      );
+    }
+  }, [savedUrl]);
+
   // No effect needed for initial loading as it's handled in useState initializer
 
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
+      <Toaster position="bottom-center" />
       <ControlsPanel
         title={title}
         setTitle={setTitle}
@@ -49,6 +110,7 @@ function App() {
         setBackgroundColor={setBackgroundColor}
         isRounded={isRounded}
         setIsRounded={setIsRounded}
+        setSavedUrl={setSavedUrl}
       />
       <PreviewPanel
         title={title}
