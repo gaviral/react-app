@@ -1,7 +1,48 @@
+import React, { useState, useEffect } from 'react';
 import './App.css'
 import Six from './components/Six'
+import AddSix from './components/AddSix'
+
+// Define type for storing Six components
+interface SixData {
+  id: string;
+  title: string;
+}
 
 function App() {
+  // Load saved sixes from localStorage on initial render
+  const [sixes, setSixes] = useState<SixData[]>(() => {
+    try {
+      const savedSixes = localStorage.getItem('appSixes');
+      if (savedSixes) {
+        return JSON.parse(savedSixes);
+      }
+    } catch (e) {
+      console.warn('Error loading sixes from localStorage', e);
+    }
+    // Default to just the first Six if nothing in localStorage
+    return [{ id: 'six-1', title: 'Curious Critters' }];
+  });
+
+  // Save sixes to localStorage when they change
+  useEffect(() => {
+    try {
+      localStorage.setItem('appSixes', JSON.stringify(sixes));
+    } catch (e) {
+      console.warn('Error saving sixes to localStorage', e);
+    }
+  }, [sixes]);
+
+  // Add a new Six with a default title
+  const handleAddSix = () => {
+    const newId = `six-${Date.now()}`; // Create unique ID
+    const newSix = {
+      id: newId,
+      title: 'New Collection'
+    };
+    setSixes([...sixes, newSix]);
+  };
+
   return (
     <div className="app-container">
       <h1>SIX Showcase</h1>
@@ -48,11 +89,12 @@ function App() {
         </div>
       </div>
 
-      {/* Three SIX components in a horizontal row */}
+      {/* Dynamic Six row - renders existing Sixes plus AddSix button */}
       <div className="six-row">
-        <Six id="six-1" title="Curious Critters" />
-        <Six id="six-2" title="Photography Portfolio" />
-        <Six id="six-3" title="Custom Curation" />
+        {sixes.map((six) => (
+          <Six key={six.id} id={six.id} title={six.title} />
+        ))}
+        {sixes.length < 3 && <AddSix onAdd={handleAddSix} />}
       </div>
     </div>
   )

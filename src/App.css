@@ -159,8 +159,8 @@ body {
 .six-row {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
   gap: 1.5rem;
   margin-top: 1.5rem;
   padding: 0.5rem;

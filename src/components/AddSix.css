@@ -1,0 +1,45 @@
+.add-six-container {
+    width: 100%;
+    height: 300px;
+    min-width: 340px;
+    max-width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px dotted #F5F5F1;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.add-six-container:hover {
+    background-color: #FFFFFF;
+}
+
+.add-six-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+.add-six-container:hover .add-six-icon-container {
+    background-color: #F5F5F1;
+}
+
+.add-six-icon {
+    width: 100%;
+    height: 100%;
+    opacity: 0.7;
+}
+
+/* Focus styles for accessibility */
+.add-six-container:focus-visible {
+    outline: 2px solid dodgerblue;
+    outline-offset: 2px;
+}
