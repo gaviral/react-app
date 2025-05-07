@@ -34,7 +34,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* 2 picks per row, as requested */
-    gap: 5px;
+    gap: 15px;
     justify-items: center;
     /* Center items in grid cells */
 }

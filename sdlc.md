@@ -135,6 +135,7 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 3. Research potential future features for the SIX application.
 4. Handle incorrect image URLs gracefully (e.g., show placeholder or error message).
 5. Refactor: Split large 'remaining tasks' commit into smaller, focused commits.
+6. Review and improve color theme for Save/Cancel buttons in edit modes.
 
 ## 8. Visual Differences Between Prototype and Implementation
 
