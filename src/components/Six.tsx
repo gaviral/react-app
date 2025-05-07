@@ -37,15 +37,22 @@ const Six: React.FC<SixProps> = ({ title: initialTitle }) => {
 
     const handleAddPick = (index: number) => {
         const name = window.prompt("Enter pick name:");
-        if (!name) return; // User cancelled or entered empty name
+        if (!name) return;
 
         const imageUrl = window.prompt("Enter pick image URL:");
-        if (!imageUrl) return; // User cancelled or entered empty URL
+        if (!imageUrl) return;
 
         const newPicks = [...picks];
         newPicks[index] = { name, imageUrl };
         setPicks(newPicks);
         console.log(`Added pick at index ${index}:`, newPicks[index]);
+    };
+
+    const handleDeletePick = (index: number) => {
+        const newPicks = [...picks];
+        newPicks[index] = null; // Set the pick at the index to null
+        setPicks(newPicks);
+        console.log(`Deleted pick at index ${index}`);
     };
 
     return (
@@ -76,9 +83,10 @@ const Six: React.FC<SixProps> = ({ title: initialTitle }) => {
                 {picks.map((pickData, index) => (
                     <Pick
                         key={index}
-                        onAdd={() => handleAddPick(index)}
+                        onAdd={() => !pickData && handleAddPick(index)}
                         name={pickData?.name}
                         imageUrl={pickData?.imageUrl}
+                        onDelete={() => pickData && handleDeletePick(index)}
                     />
                 ))}
             </div>

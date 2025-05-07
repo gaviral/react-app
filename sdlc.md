@@ -133,3 +133,5 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 1. Persist Six state (title and picks) using local storage to prevent data loss on page refresh.
 2. Accessibility improvements (e.g., ARIA attributes, keyboard navigation).
 3. Research potential future features for the SIX application.
+4. Handle incorrect image URLs gracefully (e.g., show placeholder or error message).
+5. Refactor: Split large 'remaining tasks' commit into smaller, focused commits.
