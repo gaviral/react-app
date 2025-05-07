@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import editIcon from '../assets/icon-edit.png'; // Assuming this is the path
 import Pick from './Pick'; // Import the Pick component
 import './Six.css'; // Import the CSS file
@@ -10,28 +10,67 @@ interface PickData {
 }
 
 interface SixProps {
+    id: string; // Added id prop for unique localStorage key
     title: string;
 }
 
-const Six: React.FC<SixProps> = ({ title: initialTitle }) => {
-    const [title, setTitle] = useState(initialTitle);
-    const [isEditingTitle, setIsEditingTitle] = useState(false); // Renamed for clarity
-    const [editTitleValue, setEditTitleValue] = useState(initialTitle); // Renamed for clarity
+const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
+    const localStorageKey = `sixState-${id}`;
 
-    // State for the 6 picks, can be PickData or null if empty
-    const [picks, setPicks] = useState<(PickData | null)[]>(Array(6).fill(null));
+    // Function to load state from localStorage
+    const loadState = (): { title: string; picks: (PickData | null)[] } => {
+        try {
+            const serializedState = localStorage.getItem(localStorageKey);
+            if (serializedState === null) {
+                return { title: initialTitle, picks: Array(6).fill(null) };
+            }
+            const storedState = JSON.parse(serializedState);
+            // Ensure picks array is always length 6, even if stored data was malformed/old
+            const validPicks = Array(6).fill(null);
+            if (Array.isArray(storedState.picks)) {
+                for (let i = 0; i < Math.min(storedState.picks.length, 6); i++) {
+                    if (storedState.picks[i] && typeof storedState.picks[i].name === 'string' && typeof storedState.picks[i].imageUrl === 'string') {
+                        validPicks[i] = storedState.picks[i];
+                    }
+                }
+            }
+            return {
+                title: storedState.title || initialTitle,
+                picks: validPicks,
+            };
+        } catch (e) {
+            console.warn("Error loading state from localStorage for", id, e);
+            return { title: initialTitle, picks: Array(6).fill(null) };
+        }
+    };
 
-    const handleEditTitle = () => { // Renamed for clarity
+    const [title, setTitle] = useState<string>(() => loadState().title);
+    const [isEditingTitle, setIsEditingTitle] = useState(false);
+    const [editTitleValue, setEditTitleValue] = useState<string>(""); // Initialize empty, set on edit
+    const [picks, setPicks] = useState<(PickData | null)[]>(() => loadState().picks);
+
+    // Effect to save state to localStorage whenever title or picks change
+    useEffect(() => {
+        try {
+            const stateToSave = { title, picks };
+            const serializedState = JSON.stringify(stateToSave);
+            localStorage.setItem(localStorageKey, serializedState);
+        } catch (e) {
+            console.warn("Error saving state to localStorage for", id, e);
+        }
+    }, [title, picks, localStorageKey]);
+
+    const handleEditTitle = () => {
         setEditTitleValue(title);
         setIsEditingTitle(true);
     };
 
-    const handleSaveTitle = () => { // Renamed for clarity
+    const handleSaveTitle = () => {
         setTitle(editTitleValue);
         setIsEditingTitle(false);
     };
 
-    const handleCancelEditTitle = () => { // Renamed for clarity
+    const handleCancelEditTitle = () => {
         setIsEditingTitle(false);
     };
 
@@ -82,7 +121,7 @@ const Six: React.FC<SixProps> = ({ title: initialTitle }) => {
             <div className="picks-grid">
                 {picks.map((pickData, index) => (
                     <Pick
-                        key={index}
+                        key={`${id}-pick-${index}`} // Ensure unique key for picks too
                         onAdd={() => !pickData && handleAddPick(index)}
                         name={pickData?.name}
                         imageUrl={pickData?.imageUrl}
