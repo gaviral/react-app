@@ -123,27 +123,32 @@ body {
 .six-column {
   display: flex;
   flex-direction: column;
-  /* Stack Sixes vertically */
   gap: 1.5rem;
-  /* Space between the two Six components */
-  flex: 2;
-  /* Let Six column take more space */
-  /* Maybe add min-width if needed */
+  flex: 1.5;
+  /* Adjusted flex ratio */
 }
 
 .feature-showcase {
   flex: 1;
-  /* Let showcase take remaining space */
+  /* Kept flex ratio */
   padding: 1rem;
   border-left: 1px solid #E4E4D9;
-  /* Separator line */
-  /* min-width: 300px; */
-  /* Example min-width */
+  display: flex;
+  /* Make it a flex container */
+  flex-direction: column;
+  /* Stack sections vertically */
+  /* min-height can be tricky, rely on content for now */
 }
 
 .feature-section {
   margin-bottom: 1.5rem;
-  /* Space between feature sections */
+}
+
+/* Ensure last section doesn't have extra bottom margin if needed */
+.feature-section:last-child {
+  margin-bottom: 0;
+  /* flex-grow: 1; */
+  /* Alternative to push down, but complex */
 }
 
 .feature-showcase h3 {
@@ -180,4 +185,23 @@ body {
 
 .feature-showcase ul li strong {
   font-weight: 600;
+}
+
+/* GitHub Link Styling */
+.github-link {
+  display: block;
+  /* Center block link */
+  text-align: center;
+  margin-bottom: 1.5rem;
+  /* Space below link */
+  margin-top: -0.5rem;
+  /* Reduce space slightly after H1 */
+  text-decoration: none;
+  color: #555;
+  /* Subtler color */
+  font-size: 0.9rem;
+}
+
+.github-link:hover {
+  text-decoration: underline;
 }

@@ -5,6 +5,9 @@ function App() {
   return (
     <div className="app-container">
       <h1>SIX Showcase</h1>
+      <a href="https://github.com/gaviral/react-app" target="_blank" rel="noopener noreferrer" className="github-link">
+        View on GitHub
+      </a>
       <div className="main-content-area">
         <div className="six-column">
           <Six id="six-1" title="Curious Critters" />
@@ -34,11 +37,17 @@ function App() {
           </div>
 
           <div className="feature-section">
-            <h3>Additional Enhancements</h3>
+            <h3>During-Interview Enhancements</h3>
             <ul>
               <li><strong>Persistent State</strong>: Automatically saves user progress (titles, picks) via local storage (excluding initial example).</li>
               <li><strong>Accessibility Focused</strong>: Interactive elements designed for robust keyboard navigation and screen reader compatibility.</li>
-              <li><strong>UI Refinements</strong>: Includes improved component spacing, adjusted fonts, and enhanced icon styling for clarity.</li>
+            </ul>
+          </div>
+
+          <div className="feature-section">
+            <h3>Post-Interview Refinements</h3>
+            <ul>
+              <li><strong>UI Refinements</strong>: Includes improved component spacing, adjusted fonts, enhanced icon styling, and layout adjustments for clarity and presentation.</li>
             </ul>
           </div>
         </div>
