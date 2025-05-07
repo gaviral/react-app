@@ -100,3 +100,31 @@ body {
   outline: 2px solid dodgerblue;
   outline-offset: 2px;
 }
+
+/* Main App Title Styling (matches Six title) */
+.app-container>h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 32px;
+  /* Match Six title size */
+  letter-spacing: 0;
+  margin-bottom: 2rem;
+  /* Add some space below title */
+  text-align: center;
+  /* Center app title */
+}
+
+/* Wrapper for horizontal Six layout */
+.six-wrapper {
+  display: flex;
+  flex-direction: row;
+  /* Arrange horizontally */
+  justify-content: space-around;
+  /* Distribute space */
+  align-items: flex-start;
+  /* Align tops */
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+  gap: 20px;
+  /* Space between Six components */
+}
