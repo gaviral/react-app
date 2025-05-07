@@ -9,19 +9,21 @@ interface PickProps {
     name?: string;      // New prop for pick's name
     imageUrl?: string;  // New prop for pick's image URL
     onDelete?: () => void; // New prop for delete handler
+    positionClasses?: string; // Added prop for positional classes
 }
 
-const Pick: React.FC<PickProps> = ({ onAdd, name, imageUrl, onDelete }) => {
+const Pick: React.FC<PickProps> = ({ onAdd, name, imageUrl, onDelete, positionClasses }) => {
     // For now, still showing the add icon placeholder if there's no image.
     // In the next step, we'll use name and imageUrl to display the image and tooltip.
     const hasPickData = imageUrl && name;
+    const containerClasses = `pick-container ${positionClasses || ''} ${hasPickData ? 'has-data' : 'placeholder add-pick-placeholder'}`.trim();
 
     if (hasPickData) {
         // TODO: In next step, display image here using imageUrl
         // and use name for tooltip/overlay.
         // For now, just show a simple text to indicate data is present.
         return (
-            <div className="pick-container has-data" title={name}>
+            <div className={containerClasses} title={name}>
                 <img src={imageUrl} alt={name} className="pick-image" />
                 {onDelete && (
                     <button
@@ -47,7 +49,7 @@ const Pick: React.FC<PickProps> = ({ onAdd, name, imageUrl, onDelete }) => {
     // If no imageUrl, show the add placeholder
     return (
         <div
-            className="pick-container placeholder add-pick-placeholder"
+            className={containerClasses}
             onClick={onAdd}
             onKeyDown={(e) => {
                 if ((e.key === 'Enter' || e.key === ' ') && onAdd) {

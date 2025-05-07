@@ -11,11 +11,17 @@
 .title-display {
     display: flex;
     align-items: center;
+    justify-content: center;
+    /* Center title and edit icon group */
     margin-bottom: 10px;
+    position: relative;
+    /* In case we need to fine-tune icon position later */
 }
 
 .title-display h2 {
-    margin: 0 10px 0 0;
+    margin: 0;
+    /* Remove right margin if centering group */
+    /* If h2 alone needs to be centered and icon to far right, more complex flex needed here */
 }
 
 .title-edit input[type="text"] {
@@ -29,6 +35,13 @@
 .title-edit button {
     padding: 8px 12px;
     cursor: pointer;
+}
+
+.edit-title-button {
+    /* If title group is centered, icon is next to it. If icon needs to be far right, 
+       .title-display would need to be e.g. space-between and h2 have margin auto or text-align center with flex-grow */
+    margin-left: 8px;
+    /* Add back some space if h2 margin removed */
 }
 
 .picks-grid {

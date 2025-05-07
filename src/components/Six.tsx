@@ -24,6 +24,18 @@ interface SixProps {
     title: string;
 }
 
+// Helper to determine Pick position classes
+const getPositionClasses = (index: number): string => {
+    let classes = '';
+    // Assuming 2 columns
+    if (index === 0) classes += ' is-top-left';       // Top-left
+    if (index === 1) classes += ' is-top-right';      // Top-right
+    // Indices 2 and 3 are middle, no special outer corners
+    if (index === 4) classes += ' is-bottom-left';    // Bottom-left
+    if (index === 5) classes += ' is-bottom-right';   // Bottom-right
+    return classes.trim();
+};
+
 const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
     const localStorageKey = `sixState-${id}`;
     const isFirstSix = id === 'six-1';
@@ -156,11 +168,12 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
             <div className="picks-grid">
                 {picks.map((pickData, index) => (
                     <Pick
-                        key={`${id}-pick-${index}`} // Ensure unique key for picks too
+                        key={`${id}-pick-${index}`}
                         onAdd={() => !pickData && handleAddPick(index)}
                         name={pickData?.name}
                         imageUrl={pickData?.imageUrl}
                         onDelete={() => pickData && handleDeletePick(index)}
+                        positionClasses={getPositionClasses(index)}
                     />
                 ))}
             </div>

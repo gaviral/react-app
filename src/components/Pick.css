@@ -11,6 +11,24 @@
     /* Important for border not to add to width/height */
 }
 
+/* Special rounding for outer corners of the 2x3 grid */
+.pick-container.is-top-left {
+    border-top-left-radius: 20px;
+    /* More pronounced rounding */
+}
+
+.pick-container.is-top-right {
+    border-top-right-radius: 20px;
+}
+
+.pick-container.is-bottom-left {
+    border-bottom-left-radius: 20px;
+}
+
+.pick-container.is-bottom-right {
+    border-bottom-right-radius: 20px;
+}
+
 .pick-container.placeholder {
     border: 1px dotted #E8E8E8;
     background-color: rgba(255, 255, 255, 0.5);
