@@ -95,7 +95,7 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
                 setPicks(TEST_DATA);
             }
         }
-    }, [isFirstSix, localStorageKey, initialTitle]);
+    }, [isFirstSix, localStorageKey, initialTitle, id]);
 
     // Effect to save state to localStorage whenever title or picks change
     useEffect(() => {
@@ -109,7 +109,7 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
         } catch (e) {
             console.warn("Error saving state to localStorage for", id, e);
         }
-    }, [title, picks, localStorageKey, isFirstSix]);
+    }, [title, picks, localStorageKey, isFirstSix, id]);
 
     const handleEditTitle = () => {
         setEditTitleValue(title);

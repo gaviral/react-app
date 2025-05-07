@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css'
 import Six from './components/Six'
 import AddSix from './components/AddSix'
