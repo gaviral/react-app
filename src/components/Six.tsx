@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import editIcon from '../assets/icon-edit.png'; // Assuming this is the path
 import Pick from './Pick'; // Import the Pick component
 import './Six.css'; // Import the CSS file
@@ -26,16 +26,19 @@ interface SixProps {
 
 const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
     const localStorageKey = `sixState-${id}`;
+    const isFirstSix = id === 'six-1';
+    const isInitialMount = useRef(true);
 
     // Function to load state from localStorage
     const loadState = (): { title: string; picks: (PickData | null)[] } => {
+        // For the first Six, always use the test data regardless of localStorage
+        if (isFirstSix) {
+            return { title: initialTitle, picks: TEST_DATA };
+        }
+
         try {
             const serializedState = localStorage.getItem(localStorageKey);
             if (serializedState === null) {
-                // If this is the first Six (six-1), initialize with test data
-                if (id === 'six-1') {
-                    return { title: initialTitle, picks: TEST_DATA };
-                }
                 return { title: initialTitle, picks: Array(6).fill(null) };
             }
             const storedState = JSON.parse(serializedState);
@@ -54,10 +57,6 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
             };
         } catch (e) {
             console.warn("Error loading state from localStorage for", id, e);
-            // If error, initialize with test data for six-1
-            if (id === 'six-1') {
-                return { title: initialTitle, picks: TEST_DATA };
-            }
             return { title: initialTitle, picks: Array(6).fill(null) };
         }
     };
@@ -67,8 +66,22 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
     const [editTitleValue, setEditTitleValue] = useState<string>(""); // Initialize empty, set on edit
     const [picks, setPicks] = useState<(PickData | null)[]>(() => loadState().picks);
 
+    // For the first Six, ensure it has test data on first mount
+    useEffect(() => {
+        // Only run for first Six and only on initial mount
+        if (isFirstSix && isInitialMount.current) {
+            isInitialMount.current = false;
+            // Clear any existing localStorage data for this Six
+            localStorage.removeItem(localStorageKey);
+            setPicks(TEST_DATA);
+        }
+    }, [isFirstSix, localStorageKey]);
+
     // Effect to save state to localStorage whenever title or picks change
     useEffect(() => {
+        // Skip for first Six if we want it to always use test data
+        if (isFirstSix) return;
+
         try {
             const stateToSave = { title, picks };
             const serializedState = JSON.stringify(stateToSave);
@@ -76,7 +89,7 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
         } catch (e) {
             console.warn("Error saving state to localStorage for", id, e);
         }
-    }, [title, picks, localStorageKey]);
+    }, [title, picks, localStorageKey, isFirstSix]);
 
     const handleEditTitle = () => {
         setEditTitleValue(title);
