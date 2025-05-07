@@ -50,9 +50,9 @@ function App() {
 
       {/* Three SIX components in a horizontal row */}
       <div className="six-row">
-        <Six id="six-1" title="Curious Critters" />
-        <Six id="six-2" title="Example User SIX" />
-        <Six id="six-3" title="Your Custom SIX" />
+        <Six id="six-1" title="Wildlife Collection" />
+        <Six id="six-2" title="Photography Portfolio" />
+        <Six id="six-3" title="Custom Curation" />
       </div>
     </div>
   )
