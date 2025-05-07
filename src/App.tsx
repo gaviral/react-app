@@ -6,7 +6,7 @@ function App() {
     <div className="app-container">
       <h1>SIX Showcase</h1>
       <a href="https://github.com/gaviral/react-app" target="_blank" rel="noopener noreferrer" className="github-link">
-        View on GitHub
+        View Source Code
       </a>
       <div className="main-content-area">
         <div className="six-column">
@@ -17,36 +17,37 @@ function App() {
           <div className="feature-section">
             <h3>Core Requirements Delivered</h3>
             <ul>
-              <li><strong>SIX Concept</strong>: Implemented core functionality with editable titles and up to 6 customizable picks (name/image).</li>
-              <li><strong>Multi-Instance Support</strong>: Designed for scalability, allowing multiple independent SIX components per page.</li>
-              <li><strong>Title Editing</strong>: Integrated accessible controls for seamless title modification.</li>
-              <li><strong>Pick Management</strong>: Provided intuitive pick creation via placeholder prompts for name and image URL.</li>
-              <li><strong>Pick Display</strong>: Ensured clear image presentation with informative tooltips.</li>
-              <li><strong>Base Styling</strong>: Applied specified visual styles for page background, pick containers, and inputs.</li>
+              <li><strong>Editable Sixes</strong>: Title &amp; up to 6 Picks (Name/Image).</li>
+              <li><strong>Multi-Instance</strong>: Scalable design supporting multiple SIX components.</li>
+              <li><strong>Pick Creation</strong>: Via placeholder (+) with Name/URL prompts.</li>
+              <li><strong>Display</strong>: Pick images and name tooltips.</li>
+              <li><strong>Base Styling</strong>: Adherence to specified visual guidelines.</li>
             </ul>
           </div>
 
           <div className="feature-section">
             <h3>Stretch Goals Delivered</h3>
             <ul>
-              <li><strong>Pick Deletion</strong>: Added accessible controls for removing individual picks.</li>
-              <li><strong>Name Overlay</strong>: Enhanced pick display with a clear name overlay on images.</li>
+              <li><strong>Pick Deletion</strong>: Accessible removal controls.</li>
+              <li><strong>Name Overlay</strong>: Clear name display on pick images.</li>
             </ul>
           </div>
 
           <div className="feature-section">
             <h3>Proactive Enhancements</h3>
             <ul>
-              <li><strong>State Persistence</strong>: Implemented local storage to retain user state across sessions, improving usability.</li>
-              <li><strong>Accessibility</strong>: Incorporated ARIA attributes and keyboard navigation support for enhanced accessibility.</li>
+              <li><strong>State Persistence</strong>: Local storage for seamless sessions.</li>
+              <li><strong>Accessibility</strong>: Keyboard navigation &amp; ARIA support.</li>
             </ul>
           </div>
+
+          <div style={{ flexGrow: 1 }}></div>
 
           <div className="feature-section">
             <h3>Continued Refinements</h3>
             <ul>
-              <li><strong>UI Polish</strong>: Iteratively refined component spacing, fonts, icon styling, and layout based on feedback and best practices.</li>
-              <li><strong>Code Structure</strong>: Maintained component-based architecture suitable for further expansion.</li>
+              <li><strong>UI Polish</strong>: Iterative styling, spacing, font, and layout tuning.</li>
+              <li><strong>Architecture</strong>: Maintainable component structure.</li>
             </ul>
           </div>
         </div>
