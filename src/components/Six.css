@@ -1,11 +1,13 @@
 .six-container {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     /* Add some space between Six components */
-    padding: 15px;
+    padding: 10px;
     /* border: 1px solid #DDD; */
     /* Removed as per user request */
     /* border-radius: 8px; */
     /* Removed as per user request */
+    max-width: 340px;
+    /* Constrain width to fit three in a row */
 }
 
 .title-display {
@@ -23,7 +25,8 @@
     /* Apply new styles from test.md */
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
     font-weight: 600;
-    font-size: 32px;
+    font-size: 24px;
+    /* Reduced font size */
     letter-spacing: 0;
     /* Original text-align: center or flex: 1 might need review/adjustment if previously added */
 }
@@ -50,7 +53,7 @@
 
 .picks-grid {
     display: grid;
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(2, 1fr);
     /* Columns as wide as pick items */
     gap: 5px;
     /* Small, equal spacing */
