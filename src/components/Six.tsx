@@ -12,11 +12,11 @@ interface PickData {
 // Test data from the SDLC file
 const TEST_DATA: PickData[] = [
     { name: "Red Panda", imageUrl: "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-1130384453-scaled.jpg" },
-    { name: "Axolotl", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_23168078_8.jpg" },
-    { name: "Serval", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_32740761_8.jpg" },
-    { name: "Antelope Squirrel", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_76440141_1.jpg" },
-    { name: "Chevrotain", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_5_36801498.jpg" },
-    { name: "Sand Cat Quokka", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_71746239_7.jpg" }
+    { name: "Axolotl", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_231680788.jpg" },
+    { name: "Serval", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_327407618.jpg" },
+    { name: "Antelope Squirrel", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_764401411.jpg" },
+    { name: "Chevrotain", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_368014985.jpg" },
+    { name: "Sand Cat", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_717462397.jpg" }
 ];
 
 interface SixProps {

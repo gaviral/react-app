@@ -28,11 +28,11 @@ Style Info
 Test Data
 Pick Name Image URL
 Red Panda https://www.rd.com/wp-content/uploads/2021/04/GettyImages-1130384453-scaled.jpg
-Axolotl https://www.rd.com/wp-content/uploads/2018/05/shutterstock_23168078_8.jpg
-Serval https://www.rd.com/wp-content/uploads/2018/05/shutterstock_32740761_8.jpg
-Antelope Squirrel https://www.rd.com/wp-content/uploads/2018/05/shutterstock_76440141_1.jpg
-Chevrotain https://www.rd.com/wp-content/uploads/2018/05/shutterstock_5_36801498.jpg
-Sand Cat Quokka https://www.rd.com/wp-content/uploads/2018/05/shutterstock_71746239_7.jpg
+Axolotl https://www.rd.com/wp-content/uploads/2018/05/shutterstock_231680788.jpg
+Serval https://www.rd.com/wp-content/uploads/2018/05/shutterstock_327407618.jpg
+Antelope Squirrel https://www.rd.com/wp-content/uploads/2018/05/shutterstock_764401411.jpg
+Chevrotain https://www.rd.com/wp-content/uploads/2018/05/shutterstock_368014985.jpg
+Sand Cat https://www.rd.com/wp-content/uploads/2018/05/shutterstock_717462397.jpg
 Quokka https://www.rd.com/wp-content/uploads/2021/04/GettyImages-1145794687.jpg
 
 

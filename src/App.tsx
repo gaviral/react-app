@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="app-container">
       <h1>My SIX App</h1>
-      <Six id="six-1" title="Six Title" />
+      <Six id="six-1" title="Curious Critters" />
       <hr />
       <Six id="six-2" title="Another Awesome Six" />
     </div>
