@@ -64,7 +64,8 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
                 }
             }
             return {
-                title: storedState.title || initialTitle,
+                // Always use initialTitle from props
+                title: initialTitle,
                 picks: validPicks,
             };
         } catch (e) {
@@ -78,16 +79,23 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
     const [editTitleValue, setEditTitleValue] = useState<string>(""); // Initialize empty, set on edit
     const [picks, setPicks] = useState<(PickData | null)[]>(() => loadState().picks);
 
-    // For the first Six, ensure it has test data on first mount
+    // Clear localStorage for all components on first mount to ensure
+    // we respect the initialTitle
     useEffect(() => {
-        // Only run for first Six and only on initial mount
-        if (isFirstSix && isInitialMount.current) {
+        if (isInitialMount.current) {
             isInitialMount.current = false;
-            // Clear any existing localStorage data for this Six
+            // Reset localStorage for this Six component
             localStorage.removeItem(localStorageKey);
-            setPicks(TEST_DATA);
+
+            // Reset title to match initialTitle
+            setTitle(initialTitle);
+
+            // Set data appropriately
+            if (isFirstSix) {
+                setPicks(TEST_DATA);
+            }
         }
-    }, [isFirstSix, localStorageKey]);
+    }, [isFirstSix, localStorageKey, initialTitle]);
 
     // Effect to save state to localStorage whenever title or picks change
     useEffect(() => {
