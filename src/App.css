@@ -9,9 +9,9 @@ body {
   /* From existing #root */
   background-color: #F5F5F1;
   /* Page background color from SDLC */
-  color-scheme: light dark;
+  color-scheme: light;
   /* From existing body (via browser styles) */
-  color: rgba(255, 255, 255, 0.87);
+  color: #333333;
   /* Default Vite text color for dark mode, good to keep if theme switches */
   font-synthesis: none;
   text-rendering: optimizeLegibility;
