@@ -34,7 +34,7 @@ const Pick: React.FC<PickProps> = ({ onAdd, name, imageUrl, onDelete }) => {
                         }}
                     />
                 )}
-                {/* TODO: Add overlay for name as per later requirement */}
+                <div className="pick-name-overlay">{name}</div>
             </div>
         );
     }

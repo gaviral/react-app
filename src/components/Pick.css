@@ -54,3 +54,25 @@
     border-radius: 50%;
     padding: 2px;
 }
+
+.pick-name-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Semi-transparent black background */
+    color: white;
+    font-size: 0.8em;
+    padding: 4px;
+    text-align: center;
+    overflow: hidden;
+    /* Hide overflow text */
+    text-overflow: ellipsis;
+    /* Add ellipsis for long names */
+    white-space: nowrap;
+    /* Prevent wrapping */
+    border-bottom-left-radius: inherit;
+    /* Inherit border radius from parent if any */
+    border-bottom-right-radius: inherit;
+}
