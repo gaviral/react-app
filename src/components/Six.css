@@ -33,12 +33,14 @@
 
 .picks-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* 2 picks per row, as requested */
+    grid-template-columns: repeat(2, max-content);
+    /* Columns as wide as pick items */
     gap: 5px;
-    /* Reduced to 5px for small, equal spacing */
-    justify-items: center;
-    /* Center items in grid cells */
+    /* Small, equal spacing */
+    justify-content: center;
+    /* Center the grid if it's narrower than container */
+    /* justify-items: center; */
+    /* Removed, as max-content columns define width */
 }
 
 /* Responsive: Can adjust or remove if 2 columns is always desired 
