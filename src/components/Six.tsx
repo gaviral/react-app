@@ -9,6 +9,16 @@ interface PickData {
     imageUrl: string;
 }
 
+// Test data from the SDLC file
+const TEST_DATA: PickData[] = [
+    { name: "Red Panda", imageUrl: "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-1130384453-scaled.jpg" },
+    { name: "Axolotl", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_23168078_8.jpg" },
+    { name: "Serval", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_32740761_8.jpg" },
+    { name: "Antelope Squirrel", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_76440141_1.jpg" },
+    { name: "Chevrotain", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_5_36801498.jpg" },
+    { name: "Sand Cat Quokka", imageUrl: "https://www.rd.com/wp-content/uploads/2018/05/shutterstock_71746239_7.jpg" }
+];
+
 interface SixProps {
     id: string; // Added id prop for unique localStorage key
     title: string;
@@ -22,6 +32,10 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
         try {
             const serializedState = localStorage.getItem(localStorageKey);
             if (serializedState === null) {
+                // If this is the first Six (six-1), initialize with test data
+                if (id === 'six-1') {
+                    return { title: initialTitle, picks: TEST_DATA };
+                }
                 return { title: initialTitle, picks: Array(6).fill(null) };
             }
             const storedState = JSON.parse(serializedState);
@@ -40,6 +54,10 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
             };
         } catch (e) {
             console.warn("Error loading state from localStorage for", id, e);
+            // If error, initialize with test data for six-1
+            if (id === 'six-1') {
+                return { title: initialTitle, picks: TEST_DATA };
+            }
             return { title: initialTitle, picks: Array(6).fill(null) };
         }
     };
