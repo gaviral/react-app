@@ -38,7 +38,7 @@
 }
 
 .pick-container.placeholder {
-    border: 1px dotted #E8E8E8;
+    border: 1px dotted #F5F5F1;
     transition: background-color 0.2s ease;
 }
 
@@ -50,7 +50,7 @@
 
 .pick-container.has-data {
     border: 1px dotted #E8E8E8;
-    /* Match border with placeholder */
+    /* Keep border styling for data containers */
     position: relative;
     /* For positioning delete icon */
     /* The image itself will fill the container due to object-fit: cover */
