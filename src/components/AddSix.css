@@ -1,16 +1,20 @@
 .add-six-container {
     width: 100%;
-    height: 420px;
+    /* Calculate Six height: title(~40px) + 3 rows of picks(3*180px=540px) + grid gaps(2*5px=10px) + padding(2*10px=20px) */
+    height: 610px;
     min-width: 340px;
     max-width: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px dotted #F5F5F1;
-    border-radius: 8px;
+    /* Match the more pronounced corner rounding from Pick components */
+    border-radius: 20px;
     background-color: rgba(255, 255, 255, 0.5);
     transition: background-color 0.2s ease;
     cursor: pointer;
+    /* Add box-sizing to ensure consistency */
+    box-sizing: border-box;
 }
 
 .add-six-container:hover {
