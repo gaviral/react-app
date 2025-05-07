@@ -128,7 +128,7 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 
 ## 7. Backlog
 
-1. _(Backlog item)_
+1. Persist Six state (title and picks) using local storage to prevent data loss on page refresh.
 2. _(Backlog item)_
 3. _(Backlog item)_
 -->

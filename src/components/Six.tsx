@@ -2,47 +2,62 @@ import React, { useState } from 'react';
 import editIcon from '../assets/icon-edit.png'; // Assuming this is the path
 import Pick from './Pick'; // Import the Pick component
 
+// Define the structure for a Pick
+interface PickData {
+    name: string;
+    imageUrl: string;
+}
+
 interface SixProps {
     title: string;
 }
 
 const Six: React.FC<SixProps> = ({ title: initialTitle }) => {
     const [title, setTitle] = useState(initialTitle);
-    const [isEditing, setIsEditing] = useState(false);
-    const [editValue, setEditValue] = useState(initialTitle);
+    const [isEditingTitle, setIsEditingTitle] = useState(false); // Renamed for clarity
+    const [editTitleValue, setEditTitleValue] = useState(initialTitle); // Renamed for clarity
 
-    const handleEdit = () => {
-        setEditValue(title); // Initialize edit input with current title
-        setIsEditing(true);
+    // State for the 6 picks, can be PickData or null if empty
+    const [picks, setPicks] = useState<(PickData | null)[]>(Array(6).fill(null));
+
+    const handleEditTitle = () => { // Renamed for clarity
+        setEditTitleValue(title);
+        setIsEditingTitle(true);
     };
 
-    const handleSave = () => {
-        setTitle(editValue);
-        setIsEditing(false);
+    const handleSaveTitle = () => { // Renamed for clarity
+        setTitle(editTitleValue);
+        setIsEditingTitle(false);
     };
 
-    const handleCancel = () => {
-        setIsEditing(false);
-        // Optionally reset editValue to title if needed, or just close
+    const handleCancelEditTitle = () => { // Renamed for clarity
+        setIsEditingTitle(false);
     };
 
     const handleAddPick = (index: number) => {
-        // Placeholder function for adding/editing a pick
-        console.log(`Attempting to add/edit pick at index: ${index}`);
-        // Later, this will prompt for name and image URL
+        const name = window.prompt("Enter pick name:");
+        if (!name) return; // User cancelled or entered empty name
+
+        const imageUrl = window.prompt("Enter pick image URL:");
+        if (!imageUrl) return; // User cancelled or entered empty URL
+
+        const newPicks = [...picks];
+        newPicks[index] = { name, imageUrl };
+        setPicks(newPicks);
+        console.log(`Added pick at index ${index}:`, newPicks[index]);
     };
 
     return (
         <div className="six-container">
-            {isEditing ? (
+            {isEditingTitle ? (
                 <div className="title-edit">
                     <input
                         type="text"
-                        value={editValue}
-                        onChange={(e) => setEditValue(e.target.value)}
+                        value={editTitleValue}
+                        onChange={(e) => setEditTitleValue(e.target.value)}
                     />
-                    <button onClick={handleSave}>Save</button>
-                    <button onClick={handleCancel}>Cancel</button> {/* Added Cancel button */}
+                    <button onClick={handleSaveTitle}>Save</button>
+                    <button onClick={handleCancelEditTitle}>Cancel</button>
                 </div>
             ) : (
                 <div className="title-display">
@@ -50,16 +65,21 @@ const Six: React.FC<SixProps> = ({ title: initialTitle }) => {
                     <img
                         src={editIcon}
                         alt="Edit Title"
-                        onClick={handleEdit}
+                        onClick={handleEditTitle}
                         className="edit-icon"
                         style={{ cursor: 'pointer', width: '16px', height: '16px', marginLeft: '8px' }}
                     />
                 </div>
             )}
-            {/* Placeholder for Picks */}
             <div className="picks-grid">
-                {Array.from({ length: 6 }).map((_, index) => (
-                    <Pick key={index} onAdd={() => handleAddPick(index)} />
+                {picks.map((pickData, index) => (
+                    // Pass pickData to Pick component, though it won't use it yet
+                    <Pick
+                        key={index}
+                        onAdd={() => handleAddPick(index)}
+                    // name={pickData?.name} // Will be used in next step
+                    // imageUrl={pickData?.imageUrl} // Will be used in next step
+                    />
                 ))}
             </div>
         </div>
