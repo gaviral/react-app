@@ -135,3 +135,37 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 3. Research potential future features for the SIX application.
 4. Handle incorrect image URLs gracefully (e.g., show placeholder or error message).
 5. Refactor: Split large 'remaining tasks' commit into smaller, focused commits.
+
+## 8. Visual Differences Between Prototype and Implementation
+
+The following differences were observed between the provided prototype and current implementation:
+
+1. **Pick Container Corners**: 
+   - Prototype: Picks have rounded corners with varied radius (more pronounced in some corners, like the top-right corner of the top-right pick)
+   - Current: Picks have uniform square corners
+
+2. **Pick Container Border**:
+   - Prototype: More subtle dotted border with a softer appearance
+   - Current: More defined border around pick containers
+
+3. **Layout & Spacing**:
+   - Prototype: Single Six component with more spacing between picks
+   - Current: Two Six components with horizontal separator, less spacing between picks
+
+4. **Container Styling**:
+   - Prototype: Pick containers have a softer, more subtle appearance
+   - Current: More defined container borders and structure
+
+5. **Plus Sign Styling**:
+   - Prototype: Larger plus signs with different styling/emphasis
+   - Current: Smaller, more uniform plus signs
+
+6. **Title Style**:
+   - Prototype: Single "Six Title" with simpler styling
+   - Current: App title plus individual Six component titles with edit icons
+
+7. **Background Contrast**:
+   - Prototype: Subtly different background/foreground contrast
+   - Current: Different color relationships between elements
+
+These visual refinements should be addressed to more closely match the prototype design.
