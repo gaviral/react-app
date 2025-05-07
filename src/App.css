@@ -1,3 +1,24 @@
+body {
+  margin: 0;
+  /* Common reset */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* From existing #root */
+  line-height: 1.5;
+  /* From existing #root */
+  font-weight: 400;
+  /* From existing #root */
+  background-color: #F5F5F1;
+  /* Page background color from SDLC */
+  color-scheme: light dark;
+  /* From existing body (via browser styles) */
+  color: rgba(255, 255, 255, 0.87);
+  /* Default Vite text color for dark mode, good to keep if theme switches */
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -11,9 +32,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +45,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
