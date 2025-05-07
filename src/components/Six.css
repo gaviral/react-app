@@ -32,16 +32,20 @@
 
 .picks-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 picks per row */
+    grid-template-columns: repeat(2, 1fr);
+    /* 2 picks per row, as requested */
     gap: 10px;
     justify-items: center;
     /* Center items in grid cells */
 }
 
-/* Responsive: 2 picks per row on smaller screens */
+/* Responsive: Can adjust or remove if 2 columns is always desired 
+   For now, let's keep it, it might still make sense for very narrow screens to go to 1 column, 
+   or this can be adjusted to 1 column if needed. 
+   If the main is 2, this rule makes it 2 as well, so no change unless adjusted. */
 @media (max-width: 480px) {
     .picks-grid {
         grid-template-columns: repeat(2, 1fr);
+        /* Or repeat(1, 1fr) for super small screens */
     }
 }
