@@ -111,99 +111,76 @@ body {
   text-align: center;
 }
 
-/* New Two-Column Layout */
-.main-content-area {
+/* Explanation Section at the top */
+.explanation-section {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  /* Adjust gap as needed for visual separation */
-  align-items: flex-start;
-}
-
-.six-column {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 1.5rem;
-  flex: 1;
-  /* Set to equal flex basis */
-  padding: 1.5rem;
-  /* Add padding for internal spacing */
-  box-sizing: border-box;
-  /* Include padding in flex basis calculation */
-}
-
-.feature-showcase {
-  flex: 1;
-  /* Set to equal flex basis */
-  padding: 1.5rem;
-  /* Add consistent padding */
-  /* border-left: 1px solid #E4E4D9; */
-  /* Removed border, relying on gap/padding */
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  /* Include padding in flex basis calculation */
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #FFFFFF;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .feature-section {
-  margin-bottom: 1.5rem;
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 1rem;
 }
 
-/* Ensure last section doesn't have extra bottom margin if needed */
-.feature-section:last-child {
-  margin-bottom: 0;
-  /* flex-grow: 1; */
-  /* Alternative to push down, but complex */
-}
-
-.feature-showcase h3 {
+.feature-section h3 {
   margin-top: 0;
   margin-bottom: 0.75rem;
   font-size: 1.2rem;
-  /* Slightly smaller than h2 */
   font-weight: 600;
   border-bottom: 1px solid #EEE;
-  /* Subtle separator */
   padding-bottom: 0.25rem;
 }
 
-.feature-showcase h2 {
-  text-align: center;
-  margin-top: 0;
-  /* Remove top margin if padding is added */
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  /* Slightly smaller heading for this section */
-}
-
-.feature-showcase ul {
+.feature-section ul {
   list-style: none;
-  /* Remove default bullets */
   padding: 0;
   margin: 0;
 }
 
-.feature-showcase ul li {
+.feature-section ul li {
   margin-bottom: 0.75rem;
   line-height: 1.5;
+  text-align: left;
 }
 
-.feature-showcase ul li strong {
+.feature-section ul li strong {
   font-weight: 600;
+}
+
+/* Horizontal SIX Row */
+.six-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+/* Responsive layout */
+@media (max-width: 1200px) {
+  .six-row {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* GitHub Link Styling */
 .github-link {
   display: block;
-  /* Center block link */
   text-align: center;
   margin-bottom: 1.5rem;
-  /* Space below link */
   margin-top: -0.5rem;
-  /* Reduce space slightly after H1 */
   text-decoration: none;
   color: #555;
-  /* Subtler color */
   font-size: 0.9rem;
 }
 
