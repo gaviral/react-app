@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './CountdownBooster.css'; // We'll create this next
 
 interface CountdownBoosterProps {
@@ -60,6 +60,11 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
     const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
     const [showToast, setShowToast] = useState<boolean>(false);
     const [toastMessage, setToastMessage] = useState<string>('');
+
+    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [isDragging, setIsDragging] = useState(false);
+    const dragStartOffset = useRef({ x: 0, y: 0 });
+    const boosterRef = useRef<HTMLDivElement>(null);
 
     // Effect for saving to local storage
     useEffect(() => {
@@ -123,16 +128,52 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
 
     const formatTime = (value: number) => String(value).padStart(2, '0');
 
+    const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
+        e.dataTransfer.setData('text/plain', ''); // Necessary for Firefox
+        setIsDragging(true);
+        if (boosterRef.current) {
+            const rect = boosterRef.current.getBoundingClientRect();
+            dragStartOffset.current = {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+            };
+        }
+    };
+
+    const handleDragEnd = (e: React.DragEvent<HTMLDivElement>) => {
+        setIsDragging(false);
+        // Ensure clientX/Y are not 0 (can happen if drag is cancelled weirdly)
+        if (e.clientX !== 0 || e.clientY !== 0) {
+            setPosition({
+                x: e.clientX - dragStartOffset.current.x,
+                y: e.clientY - dragStartOffset.current.y,
+            });
+        }
+    };
+
     return (
-        <div className="countdown-booster" style={{ borderColor: accentColor }}>
-            <h2>Countdown Booster</h2>
+        <div
+            ref={boosterRef}
+            className={`countdown-booster ${isDragging ? 'dragging' : ''}`}
+            style={{
+                borderColor: accentColor,
+                position: 'absolute', // Changed to absolute for draggable positioning
+                left: `${position.x}px`,
+                top: `${position.y}px`,
+                cursor: isDragging ? 'grabbing' : 'grab',
+            }}
+            draggable={true}
+            onDragStart={handleDragStart}
+            onDragEnd={handleDragEnd}
+        // onDragOver={(e) => e.preventDefault()} // May be needed if dropping onto specific targets
+        >
+            <h2 style={{ cursor: isDragging ? 'grabbing' : 'grab' }}>Countdown Booster</h2> {/* Make h2 draggable header-like */}
 
             <div className="timer-display" style={{ color: timeLeft ? accentColor : undefined }}>
                 {timeLeft ? (
                     <>
                         <span style={{ color: accentColor }}>⏰ Sale ends in </span>{
-                            timeLeft.days > 0 && <>{`${timeLeft.days}d `}</>
-                        }
+                            timeLeft.days > 0 && <>{`${timeLeft.days}d `}</>}
                         {`${formatTime(timeLeft.hours)}:${formatTime(timeLeft.minutes)}:${formatTime(timeLeft.seconds)}`}
                     </>
                 ) : (
@@ -147,7 +188,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
             )}
 
             {showToast && (
-                <div className="toast-notification">
+                <div className="toast-notification" aria-live="polite" aria-atomic="true">
                     {toastMessage}
                     {toastMessage === 'Banner saved successfully!' && (
                         <button onClick={handleCopyLink} className="copy-link-button">Copy Link</button>
@@ -164,7 +205,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
                 <div>
                     <label htmlFor="accentColor">Accent Color: </label>
                     <input type="color" id="accentColor" name="accentColor" value={accentColor} onChange={e => setAccentColor(e.target.value)} />
-                    {/* Placeholder for preset colors */}
+                    <small className="contrast-note">Note: Ensure good contrast (WCAG AA ≈ 4.5:1).</small>
                 </div>
 
                 <div>

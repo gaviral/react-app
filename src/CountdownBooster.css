@@ -68,6 +68,25 @@
     background-color: #0056b3;
 }
 
+.contrast-note {
+    font-size: 0.8em;
+    color: #555;
+    margin-left: 10px;
+}
+
+.countdown-booster.dragging {
+    opacity: 0.7;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Generic focus indicator for accessibility */
+.controls input:focus,
+.controls button:focus,
+.copy-link-button:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
 .controls div {
     margin-bottom: 15px;
     display: flex;
