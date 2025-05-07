@@ -39,7 +39,7 @@ stretch goals:
 3.  **Basic State Management (Placeholders):**
     - Initialize state variables for all configurable options (end date/time, accent color, message) with placeholder or default values. No functionality, just setup.
 
-**Phase 1: Core Countdown Timer UI & Logic** 4. **Component Setup:** \* _(This step is largely covered by Phase 0, but we'll refine the specific timer area here if needed)_ 5. **Timer Display:**
+**Phase 1: Core Countdown Timer UI & Logic** 4. **Component Setup:** _ *(This step is largely covered by Phase 0, but we'll refine the specific timer area here if needed)* 5. **Timer Display:**
 _ Implement logic to calculate and display remaining time in HH:MM:SS format based on state.
 _ Ensure the timer updates every second.
 _ Connect to the placeholder timer display area.
@@ -55,7 +55,7 @@ _ Implement state management for the accent color.
 _ Apply the selected accent color to relevant parts of the banner dynamically. 8. **Optional Message Line:**
 _ Add a text input for an optional message (max 60 characters).
 _ Implement state management for the message.
-_ Display the message on the banner if provided. \* Enforce the 60-character limit.
+_ Display the message on the banner if provided. _ Enforce the 60-character limit.
 
 **Phase 3: Functionality & Persistence** 9. **Save Button & Mock API:**
 _ Add a "Save" button.
@@ -71,7 +71,7 @@ _ Verify that the color contrast for banner text (against its background, consid
 _ Provide a mechanism or guidance if a chosen accent color leads to poor contrast. 14. **Basic Styling:**
 _ Apply basic CSS to make the countdown booster presentable and user-friendly.
 
-**Phase 5: (Stretch Goal) Interactivity** 15. **Draggable Timer:** \* Implement functionality to make the countdown timer component draggable within the page.
+**Phase 5: (Stretch Goal) Interactivity** 15. **Draggable Timer:** _ Implement functionality to make the countdown timer component draggable within the page.
 
 ## 1. Planning / Requirements Engineering
 
