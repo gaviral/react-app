@@ -1,0 +1,29 @@
+.pick-container {
+    /* Basic dimensions - can be adjusted */
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    /* Important for border not to add to width/height */
+}
+
+.pick-container.placeholder {
+    border: 1px dotted #E8E8E8;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* #FFFFFF 50% opacity */
+}
+
+.pick-container.has-data {
+    border: 1px dotted #E8E8E8;
+    /* Also apply border to filled picks */
+    /* The image itself will fill the container due to object-fit: cover */
+}
+
+.pick-container img {
+    /* Ensure images within pick containers behave well, 
+     though specific styling (like object-fit) is on the img tag in Pick.tsx */
+    max-width: 100%;
+    max-height: 100%;
+}

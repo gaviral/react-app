@@ -131,5 +131,5 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 ## 7. Backlog
 
 1. Persist Six state (title and picks) using local storage to prevent data loss on page refresh.
-2. _(Backlog item)_
-3. _(Backlog item)_
+2. Accessibility improvements (e.g., ARIA attributes, keyboard navigation).
+3. Research potential future features for the SIX application.

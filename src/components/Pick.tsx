@@ -1,5 +1,6 @@
 import React from 'react';
 import addIcon from '../assets/icon-add.png'; // Assuming path to add icon
+import './Pick.css'; // Import the CSS file
 
 interface PickProps {
     // Props will be added later, e.g., for onClick handler

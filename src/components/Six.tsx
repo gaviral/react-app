@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import editIcon from '../assets/icon-edit.png'; // Assuming this is the path
 import Pick from './Pick'; // Import the Pick component
+import './Six.css'; // Import the CSS file
 
 // Define the structure for a Pick
 interface PickData {

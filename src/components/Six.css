@@ -1,0 +1,47 @@
+.six-container {
+    margin-bottom: 20px;
+    /* Add some space between Six components */
+    padding: 15px;
+    border: 1px solid #DDD;
+    /* Basic container border for now */
+    border-radius: 8px;
+}
+
+.title-display {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.title-display h2 {
+    margin: 0 10px 0 0;
+}
+
+.title-edit input[type="text"] {
+    border: 1px solid #E4E4D9;
+    /* As per SDLC */
+    padding: 8px;
+    margin-right: 8px;
+    border-radius: 4px;
+}
+
+.title-edit button {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.picks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 picks per row */
+    gap: 10px;
+    justify-items: center;
+    /* Center items in grid cells */
+}
+
+/* Responsive: 2 picks per row on smaller screens */
+@media (max-width: 480px) {
+    .picks-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
