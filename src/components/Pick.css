@@ -76,6 +76,22 @@
     opacity: 0.7;
 }
 
+.add-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+}
+
+/* When the pick container is hovered, set the icon container background to match page background */
+.pick-container:hover .add-icon-container {
+    background-color: #F5F5F1;
+}
+
 .delete-icon {
     position: absolute;
     top: 5px;

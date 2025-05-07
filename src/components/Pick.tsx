@@ -62,7 +62,9 @@ const Pick: React.FC<PickProps> = ({ onAdd, name, imageUrl, onDelete, positionCl
             aria-label="Add new pick"
             style={{ cursor: onAdd ? 'pointer' : 'default' }}
         >
-            <img src={addIcon} alt="" className="add-icon" /> {/* Alt text redundant */}
+            <div className="add-icon-container">
+                <img src={addIcon} alt="" className="add-icon" /> {/* Alt text redundant */}
+            </div>
         </div>
     );
 };
