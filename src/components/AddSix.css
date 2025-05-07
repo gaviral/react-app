@@ -1,7 +1,7 @@
 .add-six-container {
-    width: 100%;
+    width: 70%;
     /* Calculate Six height: title(~40px) + 3 rows of picks(3*180px=540px) + grid gaps(2*5px=10px) + padding(2*10px=20px) */
-    height: 610px;
+    /* height: 100%; */
     min-width: 340px;
     max-width: 30%;
     display: flex;
@@ -10,7 +10,7 @@
     border: 1px dotted #F5F5F1;
     /* Match the more pronounced corner rounding from Pick components */
     border-radius: 20px;
-    background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: rgba(255, 255, 255, 0.5); */
     transition: background-color 0.2s ease;
     cursor: pointer;
     /* Add box-sizing to ensure consistency */
@@ -18,7 +18,8 @@
 }
 
 .add-six-container:hover {
-    background-color: #FFFFFF;
+    /* background-color: #FFFFFF; */
+    border: 1px dotted #A5A5A1;
 }
 
 .add-six-icon-container {
@@ -41,6 +42,10 @@
     height: 100%;
     opacity: 0.7;
 }
+
+/* .add-six-icon:hover {
+    background-color: #FFFFFF;
+} */
 
 /* Focus styles for accessibility */
 .add-six-container:focus-visible {
