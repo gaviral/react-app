@@ -60,13 +60,13 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
   const formatTime = (value: number) => String(value).padStart(2, '0');
 
   return (
-    <div className="countdown-booster">
+    <div className="countdown-booster" style={{ borderColor: accentColor }}>
       <h2>Countdown Booster</h2>
 
-      <div className="timer-display">
+      <div className="timer-display" style={{ color: timeLeft ? accentColor : undefined }}>
         {timeLeft ? (
           <>
-            ⏰ Sale ends in {
+            <span style={{ color: accentColor }}>⏰ Sale ends in </span>{
               timeLeft.days > 0 && <>{`${timeLeft.days}d `}</>
             }
             {`${formatTime(timeLeft.hours)}:${formatTime(timeLeft.minutes)}:${formatTime(timeLeft.seconds)}`}
@@ -75,6 +75,12 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
           <span>🎉 Sale has ended!</span>
         )}
       </div>
+
+      {message && (
+        <div className="custom-message" style={{ color: accentColor }}>
+          {message}
+        </div>
+      )}
 
       <div className="controls">
         <div>

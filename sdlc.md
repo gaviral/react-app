@@ -144,3 +144,4 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 2. _(Backlog item)_
 3. _(Backlog item)_
 4. Revisit and improve overall styling and color scheme of CountdownBooster
+5. Show character count/remaining for the optional message input

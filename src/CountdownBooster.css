@@ -30,6 +30,14 @@
   color: #dc3545;
 }
 
+.custom-message {
+  text-align: center;
+  margin-top: -15px;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
 .controls div {
   margin-bottom: 15px;
   display: flex;
