@@ -64,3 +64,39 @@ body {
 .read-the-docs {
   color: #888;
 }
+
+/* Global reset for icon buttons */
+.icon-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  /* Align icon nicely */
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  /* Inherit text color if any text is ever added */
+}
+
+.icon-button:focus-visible {
+  outline: 2px solid dodgerblue;
+  /* Example focus style, adjust as needed */
+  outline-offset: 2px;
+}
+
+/* Specific styling for edit-icon within the button if needed */
+.edit-title-button .edit-icon {
+  width: 16px;
+  /* Restore original size from inline style */
+  height: 16px;
+  margin-left: 8px;
+  /* Restore original margin from inline style */
+}
+
+/* Add focus style for the placeholder acting as a button */
+.add-pick-placeholder:focus-visible {
+  outline: 2px solid dodgerblue;
+  outline-offset: 2px;
+}

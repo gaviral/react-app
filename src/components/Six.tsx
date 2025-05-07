@@ -109,13 +109,17 @@ const Six: React.FC<SixProps> = ({ id, title: initialTitle }) => {
             ) : (
                 <div className="title-display">
                     <h2>{title}</h2>
-                    <img
-                        src={editIcon}
-                        alt="Edit Title"
+                    <button
                         onClick={handleEditTitle}
-                        className="edit-icon"
-                        style={{ cursor: 'pointer', width: '16px', height: '16px', marginLeft: '8px' }}
-                    />
+                        className="icon-button edit-title-button"
+                        aria-label="Edit title"
+                    >
+                        <img
+                            src={editIcon}
+                            alt="" // Alt text is redundant due to aria-label on button
+                            className="edit-icon" // Keep class if used for styling img itself
+                        />
+                    </button>
                 </div>
             )}
             <div className="picks-grid">

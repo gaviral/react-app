@@ -24,15 +24,20 @@ const Pick: React.FC<PickProps> = ({ onAdd, name, imageUrl, onDelete }) => {
             <div className="pick-container has-data" title={name}>
                 <img src={imageUrl} alt={name} className="pick-image" />
                 {onDelete && (
-                    <img
-                        src={deleteIcon}
-                        alt="Delete Pick"
-                        className="delete-icon"
+                    <button
                         onClick={(e) => {
-                            e.stopPropagation(); // Prevent onAdd if wrapped or parent click logic
+                            e.stopPropagation();
                             onDelete();
                         }}
-                    />
+                        className="icon-button delete-pick-button"
+                        aria-label={name ? `Delete pick: ${name}` : "Delete pick"}
+                    >
+                        <img
+                            src={deleteIcon}
+                            alt="" // Alt text redundant
+                            className="delete-icon"
+                        />
+                    </button>
                 )}
                 <div className="pick-name-overlay">{name}</div>
             </div>
@@ -42,17 +47,20 @@ const Pick: React.FC<PickProps> = ({ onAdd, name, imageUrl, onDelete }) => {
     // If no imageUrl, show the add placeholder
     return (
         <div
-            className="pick-container placeholder"
+            className="pick-container placeholder add-pick-placeholder"
             onClick={onAdd}
-            style={{
-                cursor: onAdd ? 'pointer' : 'default',
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
+            onKeyDown={(e) => {
+                if ((e.key === 'Enter' || e.key === ' ') && onAdd) {
+                    e.preventDefault(); // Prevent scrolling on spacebar
+                    onAdd();
+                }
             }}
+            role="button"
+            tabIndex={0} // Make it focusable
+            aria-label="Add new pick"
+            style={{ cursor: onAdd ? 'pointer' : 'default' }}
         >
-            <img src={addIcon} alt="Add Pick" className="add-icon" />
-            {/* Later, this component will also display the pick's image and name */}
+            <img src={addIcon} alt="" className="add-icon" /> {/* Alt text redundant */}
         </div>
     );
 };
