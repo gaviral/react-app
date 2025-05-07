@@ -170,3 +170,12 @@
 .controls button:hover {
     background-color: #0056b3;
 }
+
+.char-count {
+    font-size: 0.8em;
+    color: #777;
+    /* Lighter gray for less emphasis */
+    margin-left: 10px;
+    white-space: nowrap;
+    /* Prevent wrapping if space is tight */
+}

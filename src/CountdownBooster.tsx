@@ -66,7 +66,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
     const [endDate, setEndDate] = useState<string>(() => {
         const savedDraft = localStorage.getItem(LOCAL_STORAGE_KEY);
         if (savedDraft) {
-            const settings: Partial<BoosterSettings> = JSON.parse(savedDraft); // Use Partial for potentially missing position
+            const settings: Partial<BoosterSettings> = JSON.parse(savedDraft);
             if (settings.endDate && new Date(settings.endDate) > new Date()) {
                 return settings.endDate;
             }
@@ -76,11 +76,12 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
 
     /**
      * State for the accent color of the booster.
-     * Initialized from local storage or defaults to a shade of blue.
+     * Initialized from local storage or defaults to a shade of green for consistency with timer text.
      */
     const [accentColor, setAccentColor] = useState<string>(() => {
         const savedDraft = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return savedDraft ? (JSON.parse(savedDraft) as BoosterSettings).accentColor : '#007bff'; // Default blue
+        // Defaulting to green to match the .timer-display color from CSS for initial harmony
+        return savedDraft ? (JSON.parse(savedDraft) as BoosterSettings).accentColor : '#28a745';
     });
 
     /**
@@ -89,7 +90,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
      */
     const [message, setMessage] = useState<string>(() => {
         const savedDraft = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return savedDraft ? (JSON.parse(savedDraft) as BoosterSettings).message : 'Your special offer!'; // Default message
+        return savedDraft ? (JSON.parse(savedDraft) as BoosterSettings).message : 'Your special offer!';
     });
 
     /** State for the calculated time remaining (days, hours, minutes, seconds). */
@@ -109,7 +110,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
                 return settings.position;
             }
         }
-        return { x: 0, y: 0 }; // Default position
+        return { x: 0, y: 0 };
     });
     /** State to indicate if the component is currently being dragged. */
     const [isDragging, setIsDragging] = useState(false);
@@ -291,6 +292,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
                 <div>
                     <label htmlFor="message">Optional Message (max 60): </label>
                     <input type="text" id="message" name="message" value={message} onChange={e => setMessage(e.target.value)} maxLength={60} />
+                    <small className="char-count">{message.length}/{60}</small>
                 </div>
 
                 <div>
