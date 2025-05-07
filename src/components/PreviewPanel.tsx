@@ -6,6 +6,7 @@ interface PreviewPanelProps {
   subtitle: string;
   backgroundColor: string;
   isRounded: boolean;
+  titleColor: string;
 }
 
 // Mock data for products
@@ -23,7 +24,10 @@ const PreviewPanel: React.FC<PreviewPanelProps> = ({
   subtitle,
   backgroundColor,
   isRounded,
+  titleColor,
 }) => {
+  const subtitleColor = titleColor === '#ffffff' ? '#eeeeee' : '#555555';
+
   return (
     <div style={{ flex: 1, padding: '20px', backgroundColor: backgroundColor }}>
       <h2>Preview</h2>
@@ -33,14 +37,11 @@ const PreviewPanel: React.FC<PreviewPanelProps> = ({
           borderRadius: isRounded ? '15px' : '0',
           padding: '20px',
           marginTop: '20px',
-          // Ensure text is readable on different backgrounds (basic contrast)
-          color: '#333', // Default dark text
-          // Add more sophisticated contrast logic if needed
-          backgroundColor: 'rgba(255, 255, 255, 0.8)' // Slightly transparent white inner background for now
+          backgroundColor: 'rgba(255, 255, 255, 0.8)'
         }}
       >
-        <h3>{title || 'Card Title Preview'}</h3>
-        <h4>{subtitle || 'Card Subtitle Preview'}</h4>
+        <h3 style={{ color: titleColor }}>{title || 'Card Title Preview'}</h3>
+        <h4 style={{ color: subtitleColor }}>{subtitle || 'Card Subtitle Preview'}</h4>
 
         {/* Product Display Area */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', justifyContent: 'center', marginTop: '15px' }}>

@@ -10,6 +10,8 @@ interface ControlsPanelProps {
   isRounded: boolean;
   setIsRounded: (rounded: boolean) => void;
   setSavedUrl: (url: string | null) => void;
+  contrastRatio: number | null;
+  passesContrastCheck: boolean | null;
 }
 
 const ControlsPanel: React.FC<ControlsPanelProps> = ({
@@ -22,6 +24,8 @@ const ControlsPanel: React.FC<ControlsPanelProps> = ({
   isRounded,
   setIsRounded,
   setSavedUrl,
+  contrastRatio,
+  passesContrastCheck,
 }) => {
 
   const handleSave = () => {
@@ -81,6 +85,13 @@ const ControlsPanel: React.FC<ControlsPanelProps> = ({
           onChange={(e) => setBackgroundColor(e.target.value)}
           aria-label="Background Color Picker"
         />
+        {/* Display Contrast Info */}
+        {contrastRatio !== null && (
+          <span style={{ marginLeft: '10px', fontSize: '0.8em', color: passesContrastCheck === false ? 'red' : 'inherit' }}>
+            Contrast: {contrastRatio.toFixed(2)}:1
+            {passesContrastCheck !== null && (passesContrastCheck ? ' (Passes AA ✔️)' : ' (Fails AA ❌)')}
+          </span>
+        )}
       </div>
 
       <div>
