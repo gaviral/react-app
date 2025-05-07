@@ -20,8 +20,12 @@
 
 .title-display h2 {
     margin: 0;
-    /* Remove right margin if centering group */
-    /* If h2 alone needs to be centered and icon to far right, more complex flex needed here */
+    /* Apply new styles from test.md */
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    letter-spacing: 0;
+    /* Original text-align: center or flex: 1 might need review/adjustment if previously added */
 }
 
 .title-edit input[type="text"] {
