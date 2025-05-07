@@ -6,8 +6,9 @@
     /* Removed as per user request */
     /* border-radius: 8px; */
     /* Removed as per user request */
-    max-width: 340px;
-    /* Constrain width to fit three in a row */
+    max-width: 30%;
+    min-width: 340px;
+    /* Increased max-width to use more space while maintaining minimum size */
 }
 
 .title-display {

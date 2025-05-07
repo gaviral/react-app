@@ -1,7 +1,7 @@
 .pick-container {
-    /* Reduced dimensions */
-    width: 160px;
-    height: 160px;
+    /* Increased dimensions */
+    width: 180px;
+    height: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -70,7 +70,7 @@
 }
 
 .add-icon {
-    /* Adjust icon size to match original appearance */
+    /* Using 100% of the container size which is scaled appropriately */
     width: 100%;
     height: 100%;
     opacity: 0.7;
@@ -80,6 +80,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    /* Use fixed size to ensure consistency */
     width: 40px;
     height: 40px;
     border-radius: 50%;
