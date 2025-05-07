@@ -118,13 +118,28 @@ body {
 .six-wrapper {
   display: flex;
   flex-direction: row;
-  /* Arrange horizontally */
-  justify-content: space-around;
-  /* Distribute space */
+  justify-content: center;
   align-items: flex-start;
-  /* Align tops */
-  flex-wrap: wrap;
-  /* Allow wrapping on smaller screens */
   gap: 20px;
-  /* Space between Six components */
+  margin-bottom: 2rem;
+}
+
+.requirements-summary {
+  margin-top: 3rem;
+  padding: 1rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  border-top: 1px solid #E4E4D9;
+}
+
+.requirements-summary h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.requirements-summary ul {
+  list-style: disc;
+  padding-left: 20px;
 }
