@@ -14,15 +14,13 @@ function App() {
       <div className="requirements-summary">
         <h2>Project Requirements Met</h2>
         <ul>
-          <li>Application mimics the basic SIX concept (title, 6 picks with name/image).</li>
-          <li>Ability to view and edit the title of each SIX instance.</li>
-          <li>Ability to add picks via placeholder, prompting for name and image URL.</li>
-          <li>Displays pick images once added.</li>
-          <li>Shows pick name as a tooltip on hover (using native title attribute).</li>
-          <li>Supports multiple SIX instances on a single page with independent state.</li>
-          <li>Includes a delete icon on picks to remove them.</li>
-          <li>Displays pick name in an overlay at the bottom of the image.</li>
-          <li>Implemented specified styling for page background, pick borders/fill, and title input border.</li>
+          <li>Core SIX concept: Displays <strong>title</strong> and up to <strong>6 picks</strong> (name/image).</li>
+          <li>Title Editing: Supports <strong>viewing</strong> and <strong>editing</strong> the SIX title via an edit icon.</li>
+          <li>Pick Management: Allows <strong>adding</strong> picks via placeholder (+), prompting for <strong>name/URL</strong>.</li>
+          <li>Pick Display: Shows pick <strong>images</strong>, name as <strong>tooltip</strong>, and name in an <strong>overlay</strong>.</li>
+          <li>Multiple Instances: Renders <strong>multiple SIX components</strong> with independent state.</li>
+          <li>Pick Deletion: Includes a <strong>delete icon</strong> to remove picks.</li>
+          <li>Styling: Implemented specified <strong>page background</strong>, pick <strong>border/fill</strong>, and title <strong>input border</strong> styles.</li>
         </ul>
       </div>
     </div>
