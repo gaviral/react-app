@@ -23,11 +23,13 @@ interface TimeLeft {
 /**
  * @interface BoosterSettings
  * Defines the structure for settings that are saved to local storage and (notionally) to a server.
+ * Now includes position for draggable persistence.
  */
 interface BoosterSettings {
     endDate: string;
     accentColor: string;
     message: string;
+    position: { x: number; y: number }; // Added position
 }
 
 /**
@@ -64,9 +66,8 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
     const [endDate, setEndDate] = useState<string>(() => {
         const savedDraft = localStorage.getItem(LOCAL_STORAGE_KEY);
         if (savedDraft) {
-            const settings: BoosterSettings = JSON.parse(savedDraft);
-            // Optional: Add validation for saved endDate, e.g., if it's in the past
-            if (new Date(settings.endDate) > new Date()) {
+            const settings: Partial<BoosterSettings> = JSON.parse(savedDraft); // Use Partial for potentially missing position
+            if (settings.endDate && new Date(settings.endDate) > new Date()) {
                 return settings.endDate;
             }
         }
@@ -79,7 +80,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
      */
     const [accentColor, setAccentColor] = useState<string>(() => {
         const savedDraft = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return savedDraft ? JSON.parse(savedDraft).accentColor : '#007bff'; // Default blue
+        return savedDraft ? (JSON.parse(savedDraft) as BoosterSettings).accentColor : '#007bff'; // Default blue
     });
 
     /**
@@ -88,7 +89,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
      */
     const [message, setMessage] = useState<string>(() => {
         const savedDraft = localStorage.getItem(LOCAL_STORAGE_KEY);
-        return savedDraft ? JSON.parse(savedDraft).message : 'Your special offer!'; // Default message
+        return savedDraft ? (JSON.parse(savedDraft) as BoosterSettings).message : 'Your special offer!'; // Default message
     });
 
     /** State for the calculated time remaining (days, hours, minutes, seconds). */
@@ -100,7 +101,16 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
 
     // --- Draggable Feature State ---
     /** State for the current (x, y) position of the draggable component. */
-    const [position, setPosition] = useState({ x: 0, y: 0 });
+    const [position, setPosition] = useState<{ x: number; y: number }>(() => {
+        const savedDraft = localStorage.getItem(LOCAL_STORAGE_KEY);
+        if (savedDraft) {
+            const settings: Partial<BoosterSettings> = JSON.parse(savedDraft);
+            if (settings.position && typeof settings.position.x === 'number' && typeof settings.position.y === 'number') {
+                return settings.position;
+            }
+        }
+        return { x: 0, y: 0 }; // Default position
+    });
     /** State to indicate if the component is currently being dragged. */
     const [isDragging, setIsDragging] = useState(false);
     /** Ref to store the mouse offset from the top-left of the component at the start of a drag. */
@@ -110,9 +120,9 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
 
     // Effect for saving to local storage
     useEffect(() => {
-        const settings: BoosterSettings = { endDate, accentColor, message };
+        const settings: BoosterSettings = { endDate, accentColor, message, position };
         localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(settings));
-    }, [endDate, accentColor, message]);
+    }, [endDate, accentColor, message, position]);
 
     /**
      * Calculates the time remaining until the targetDate.
@@ -149,7 +159,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
      * Logs settings to console (mocking server save) and shows a success toast.
      */
     const handleSave = () => {
-        const settings: BoosterSettings = { endDate, accentColor, message };
+        const settings: BoosterSettings = { endDate, accentColor, message, position };
         console.log('Saving settings to server (mock):', settings);
         // Simulate API call
         setTimeout(() => {
@@ -166,7 +176,7 @@ const CountdownBooster: React.FC<CountdownBoosterProps> = () => {
      */
     const handleCopyLink = () => {
         // In a real app, generate and copy a shareable link/embed code
-        const dummyLink = `https://example.com/countdown?endDate=${encodeURIComponent(endDate)}&color=${encodeURIComponent(accentColor)}&message=${encodeURIComponent(message)}`;
+        const dummyLink = `https://example.com/countdown?endDate=${encodeURIComponent(endDate)}&color=${encodeURIComponent(accentColor)}&message=${encodeURIComponent(message)}&posX=${position.x}&posY=${position.y}`;
         navigator.clipboard.writeText(dummyLink)
             .then(() => {
                 setToastMessage('Link copied to clipboard!');
