@@ -116,7 +116,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 2rem;
-  /* Space between columns */
+  /* Adjust gap as needed for visual separation */
   align-items: flex-start;
 }
 
@@ -124,20 +124,25 @@ body {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  flex: 1.5;
-  /* Adjusted flex ratio */
+  flex: 1;
+  /* Set to equal flex basis */
+  padding: 1.5rem;
+  /* Add padding for internal spacing */
+  box-sizing: border-box;
+  /* Include padding in flex basis calculation */
 }
 
 .feature-showcase {
   flex: 1;
-  /* Kept flex ratio */
-  padding: 1rem;
-  border-left: 1px solid #E4E4D9;
+  /* Set to equal flex basis */
+  padding: 1.5rem;
+  /* Add consistent padding */
+  /* border-left: 1px solid #E4E4D9; */
+  /* Removed border, relying on gap/padding */
   display: flex;
-  /* Make it a flex container */
   flex-direction: column;
-  /* Stack sections vertically */
-  /* min-height can be tricky, rely on content for now */
+  box-sizing: border-box;
+  /* Include padding in flex basis calculation */
 }
 
 .feature-section {

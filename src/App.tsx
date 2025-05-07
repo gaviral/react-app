@@ -14,40 +14,39 @@ function App() {
           <Six id="six-2" title="Example User SIX" />
         </div>
         <div className="feature-showcase">
-          <h2>Application Highlights</h2>
-
           <div className="feature-section">
-            <h3>Core Features</h3>
+            <h3>Core Requirements Delivered</h3>
             <ul>
-              <li><strong>Dynamic SIX Creation</strong>: Manage multiple SIX instances with editable titles and up to 6 customizable picks (name/image).</li>
-              <li><strong>Title Editing</strong>: View and modify SIX titles via an accessible edit icon.</li>
-              <li><strong>Pick Management</strong>: Add picks via placeholder (+), prompting for name and image URL.</li>
-              <li><strong>Basic Pick Display</strong>: Shows pick images and names as tooltips.</li>
-              <li><strong>Multi-Instance Support</strong>: Demonstrates capability to render multiple SIX components with independent state.</li>
-              <li><strong>Base Styling</strong>: Implements specified page background, pick borders/fill, and title input styles.</li>
+              <li><strong>SIX Concept</strong>: Implemented core functionality with editable titles and up to 6 customizable picks (name/image).</li>
+              <li><strong>Multi-Instance Support</strong>: Designed for scalability, allowing multiple independent SIX components per page.</li>
+              <li><strong>Title Editing</strong>: Integrated accessible controls for seamless title modification.</li>
+              <li><strong>Pick Management</strong>: Provided intuitive pick creation via placeholder prompts for name and image URL.</li>
+              <li><strong>Pick Display</strong>: Ensured clear image presentation with informative tooltips.</li>
+              <li><strong>Base Styling</strong>: Applied specified visual styles for page background, pick containers, and inputs.</li>
             </ul>
           </div>
 
           <div className="feature-section">
-            <h3>Stretch Goals Achieved</h3>
+            <h3>Stretch Goals Delivered</h3>
             <ul>
-              <li><strong>Pick Deletion</strong>: Includes an accessible delete icon on picks for easy removal.</li>
-              <li><strong>Enhanced Pick Display</strong>: Features a clear name overlay at the bottom of each pick image.</li>
+              <li><strong>Pick Deletion</strong>: Added accessible controls for removing individual picks.</li>
+              <li><strong>Name Overlay</strong>: Enhanced pick display with a clear name overlay on images.</li>
             </ul>
           </div>
 
           <div className="feature-section">
-            <h3>During-Interview Enhancements</h3>
+            <h3>Proactive Enhancements</h3>
             <ul>
-              <li><strong>Persistent State</strong>: Automatically saves user progress (titles, picks) via local storage (excluding initial example).</li>
-              <li><strong>Accessibility Focused</strong>: Interactive elements designed for robust keyboard navigation and screen reader compatibility.</li>
+              <li><strong>State Persistence</strong>: Implemented local storage to retain user state across sessions, improving usability.</li>
+              <li><strong>Accessibility</strong>: Incorporated ARIA attributes and keyboard navigation support for enhanced accessibility.</li>
             </ul>
           </div>
 
           <div className="feature-section">
-            <h3>Post-Interview Refinements</h3>
+            <h3>Continued Refinements</h3>
             <ul>
-              <li><strong>UI Refinements</strong>: Includes improved component spacing, adjusted fonts, enhanced icon styling, and layout adjustments for clarity and presentation.</li>
+              <li><strong>UI Polish</strong>: Iteratively refined component spacing, fonts, icon styling, and layout based on feedback and best practices.</li>
+              <li><strong>Code Structure</strong>: Maintained component-based architecture suitable for further expansion.</li>
             </ul>
           </div>
         </div>
