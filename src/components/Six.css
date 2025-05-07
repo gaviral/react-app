@@ -2,9 +2,10 @@
     margin-bottom: 20px;
     /* Add some space between Six components */
     padding: 15px;
-    border: 1px solid #DDD;
-    /* Basic container border for now */
-    border-radius: 8px;
+    /* border: 1px solid #DDD; */
+    /* Removed as per user request */
+    /* border-radius: 8px; */
+    /* Removed as per user request */
 }
 
 .title-display {
@@ -34,7 +35,8 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     /* 2 picks per row, as requested */
-    gap: 15px;
+    gap: 5px;
+    /* Reduced to 5px for small, equal spacing */
     justify-items: center;
     /* Center items in grid cells */
 }
