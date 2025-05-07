@@ -126,9 +126,10 @@ _(Note deployment pipeline and long-term maintenance considerations.)_
 - Re-evaluate decisions using first-principles thinking.
 - Update documentation, logging, observability; verify performance budgets.
 
+-->
+
 ## 7. Backlog
 
 1. Persist Six state (title and picks) using local storage to prevent data loss on page refresh.
 2. _(Backlog item)_
 3. _(Backlog item)_
--->

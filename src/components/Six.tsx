@@ -73,12 +73,11 @@ const Six: React.FC<SixProps> = ({ title: initialTitle }) => {
             )}
             <div className="picks-grid">
                 {picks.map((pickData, index) => (
-                    // Pass pickData to Pick component, though it won't use it yet
                     <Pick
                         key={index}
                         onAdd={() => handleAddPick(index)}
-                    // name={pickData?.name} // Will be used in next step
-                    // imageUrl={pickData?.imageUrl} // Will be used in next step
+                        name={pickData?.name}
+                        imageUrl={pickData?.imageUrl}
                     />
                 ))}
             </div>

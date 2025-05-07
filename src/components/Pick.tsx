@@ -18,16 +18,25 @@ const Pick: React.FC<PickProps> = ({ onAdd, name, imageUrl }) => {
         // and use name for tooltip/overlay.
         // For now, just show a simple text to indicate data is present.
         return (
-            <div className="pick-container has-data">
-                <p>Image: {name}</p>
-                {/* <img src={imageUrl} alt={name} /> */}
+            <div className="pick-container has-data" title={name}>
+                <img src={imageUrl} alt={name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                {/* TODO: Add overlay for name as per later requirement */}
             </div>
         );
     }
 
     // If no imageUrl, show the add placeholder
     return (
-        <div className="pick-container placeholder" onClick={onAdd} style={{ cursor: onAdd ? 'pointer' : 'default' }}>
+        <div
+            className="pick-container placeholder"
+            onClick={onAdd}
+            style={{
+                cursor: onAdd ? 'pointer' : 'default',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+            }}
+        >
             <img src={addIcon} alt="Add Pick" style={{ width: '50%', height: '50%', opacity: 0.7 }} />
             {/* Later, this component will also display the pick's image and name */}
         </div>
