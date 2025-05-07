@@ -141,6 +141,22 @@ body {
   /* Example min-width */
 }
 
+.feature-section {
+  margin-bottom: 1.5rem;
+  /* Space between feature sections */
+}
+
+.feature-showcase h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-size: 1.2rem;
+  /* Slightly smaller than h2 */
+  font-weight: 600;
+  border-bottom: 1px solid #EEE;
+  /* Subtle separator */
+  padding-bottom: 0.25rem;
+}
+
 .feature-showcase h2 {
   text-align: center;
   margin-top: 0;
