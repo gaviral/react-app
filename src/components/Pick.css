@@ -1,11 +1,12 @@
 .pick-container {
     /* Basic dimensions - can be adjusted */
-    width: 120px;
-    height: 120px;
+    width: 210px;
+    height: 210px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
+    border-radius: 4px;
     /* Important for border not to add to width/height */
 }
 
