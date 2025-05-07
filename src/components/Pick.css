@@ -44,8 +44,8 @@
 
 /* Hover effect for placeholder (plus sign container) */
 .pick-container.placeholder:hover {
-    background-color: #F5F5F1;
-    /* Exact match to website background */
+    background-color: #FFFFFF;
+    /* Changed to white as requested */
 }
 
 .pick-container.has-data {
